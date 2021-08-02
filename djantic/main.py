@@ -188,6 +188,8 @@ class ModelSchema(BaseModel, metaclass=ModelSchemaMetaclass):
                 if not field.concrete and field.auto_created:
                     accessor_name = field.get_accessor_name()
                     related_obj = getattr(instance, accessor_name, None)
+                    if not related_obj:
+                        related_obj_data = None
                     if field.one_to_many:
                         related_qs = related_obj.all()
 
