@@ -190,7 +190,7 @@ class ModelSchema(BaseModel, metaclass=ModelSchemaMetaclass):
                     related_obj = getattr(instance, accessor_name, None)
                     if not related_obj:
                         related_obj_data = None
-                    if field.one_to_many:
+                    elif field.one_to_many:
                         related_qs = related_obj.all()
 
                         if schema_cls:
