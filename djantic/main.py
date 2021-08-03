@@ -245,7 +245,7 @@ class ModelSchema(BaseModel, metaclass=ModelSchemaMetaclass):
 
                     obj_data[field.name] = related_obj_data
 
-                elif field.many_to_one:
+                elif field.many_to_one or field.one_to_one:
                     related_obj = getattr(instance, field.name)
                     if schema_cls:
                         related_obj_data = schema_cls.from_django(related_obj).dict()
